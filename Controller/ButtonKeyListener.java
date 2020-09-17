@@ -25,7 +25,7 @@ public class ButtonKeyListener implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         JButton button = (JButton) e.getSource();
-        System.out.println(button.getText());
+       
 
         if(button == panel.getNewButton()){
             
