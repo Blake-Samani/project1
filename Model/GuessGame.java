@@ -103,6 +103,16 @@ public class GuessGame {
         return currentGuess;
     }
 
+    public boolean keyExists(){
+        for(int i = 0; i < keyWord.length(); i++){
+            toCompare[i] = keyWord.charAt(i);
+            if(guesser == toCompare[i]){
+                return true;
+            }
+        }
+        return false;
+    }
+
     
 
 }  

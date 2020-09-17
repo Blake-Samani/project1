@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import View.GameScreen.GameState;
+
 
 public class GameCanvas extends JPanel {
 
@@ -34,17 +34,32 @@ public class GameCanvas extends JPanel {
             g2.setColor(Color.blue);
             g2.setFont(new Font("Courier", Font.BOLD, 30));
             g2.drawString("Press <New> to Start", 100, 160);
-            
+           
+
         }else if(state == GameScreen.GameState.PLAYING){
             g2.setColor(Color.blue);
             g2.setFont(new Font("Courier", Font.BOLD, 40));
             g2.drawString("Health Level", 50, 50);
-            for(int i = 0; i < 5; i++){
+            for(int i = 0; i < panel.getClicks(); i++){
             g2.drawRect(i * 60 + 50, 80, 50, 50);
             g2.fillRect(i * 60 + 50, 80, 50, 50);
           
             }
             
+        }else if(state == GameScreen.GameState.WIN){
+            g2.setColor(Color.red);
+            g2.setFont(new Font("Courier", Font.BOLD, 40));
+            g2.drawString("YOU WON!!!", 50, 50);
+            g2.setColor(Color.blue);
+            g2.setFont(new Font("Courier", Font.BOLD, 30));
+            g2.drawString("Press <New> to Start", 100, 160);
+        }else if(state == GameScreen.GameState.GAMEOVER){
+            g2.setColor(Color.red);
+            g2.setFont(new Font("Courier", Font.BOLD, 40));
+            g2.drawString("YOU LOST!!!", 50, 50);
+            g2.setColor(Color.blue);
+            g2.setFont(new Font("Courier", Font.BOLD, 30));
+            g2.drawString("Press <New> to Start", 100, 160);
         }
 
     }

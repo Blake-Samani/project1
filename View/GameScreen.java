@@ -4,6 +4,7 @@ import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.awt.Font;
+import java.awt.Color;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -17,7 +18,7 @@ import Model.GuessGame;
 public class GameScreen {
 
     public enum GameState{
-        READY, PLAYING, GAMEOVER
+        READY, PLAYING, GAMEOVER, WIN
     }
     
     private JFrame window;
@@ -27,6 +28,7 @@ public class GameScreen {
     private JButton newButton = new JButton("New");
     private String abc = "abcdefghijklmnopqrstuvwxyz";
     private String guesser = "";
+    private int clickCounter = 5;
  
     private GameCanvas canvas;
     private GameState gameState = GameState.READY;
@@ -47,6 +49,7 @@ public class GameScreen {
         gameKeyField.setText(game.getWord()); //sets text of our field to our randomly generated word from game
         gameKeyField.setVisible(false);
         gameKeyField.setFont(new Font("Courier", Font.BOLD, 16));
+        gameKeyField.setForeground(Color.red);
 
         northPanel.add(gameKeyField);
         northPanel.add(guessField);
@@ -54,10 +57,7 @@ public class GameScreen {
         guessField.setFont(new Font("Courier", Font.BOLD, 16));
         guessField.setText(new String(game.getGuessArray())); //sets our jtext guess field to our getGuessArray
         guessField.setVisible(false);
-        // for(int i = 0; i < gameKeyField.getText().length()-1; i++){
-        //     guesser += ".";
-        // }
-
+ 
         System.out.println(guesser);
 
         guessField.setEditable(false);
@@ -109,10 +109,6 @@ public class GameScreen {
         return canvas;
     }
 
-    public GuessGame getGame(){
-        return game;
-    }
-
     public JTextField getGameKeyField(){
         return gameKeyField;
     }
@@ -132,9 +128,20 @@ public class GameScreen {
         return canvas;
     }
 
-    // public void setGuessField(String a, int i){
-    //     guesser[i] = a;
-    //     guessField.setText("");
-    // }
+    public void setClicks(int k){
+        clickCounter = k;
+    }
+
+    public int getClicks(){
+        return clickCounter;
+    }
+
+    public void setGame(GuessGame g){
+        game = g;
+    }
+
+    public GuessGame getGame(){
+        return game;
+    }
 
 }
