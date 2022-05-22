@@ -1,2 +1,2 @@
 # project1
-Simple guessing game made in java with OO concepts.
+Simple guessing game made in java with Object Oriented concepts.
